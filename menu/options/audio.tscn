@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://cghft0kmwwi7y"]
+
+[ext_resource type="PackedScene" uid="uid://3rltpbmfb7wb" path="res://menu/components/settings_slider.tscn" id="1_khl11"]
+[ext_resource type="Script" uid="uid://6lywy6x148wo" path="res://menu/components/scripts/sliders/volume_slider.gd" id="2_53ror"]
+
+[node name="Audio" type="VBoxContainer"]
+metadata/_tab_index = 0
+
+[node name="margin" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="music_settings" type="VBoxContainer" parent="margin"]
+layout_mode = 2
+
+[node name="VolumeA" parent="margin/music_settings" instance=ExtResource("1_khl11")]
+layout_mode = 2
+
+[node name="EntryName" parent="margin/music_settings/VolumeA" index="0"]
+text = "Master"
+
+[node name="VolumeSlider" type="HSlider" parent="margin/music_settings/VolumeA"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+script = ExtResource("2_53ror")
+bus_name = "Master"
+metadata/_custom_type_script = "uid://6lywy6x148wo"
+
+[node name="VolumeB" parent="margin/music_settings" instance=ExtResource("1_khl11")]
+layout_mode = 2
+
+[node name="EntryName" parent="margin/music_settings/VolumeB" index="0"]
+text = "Music"
+
+[node name="VolumeSlider" type="HSlider" parent="margin/music_settings/VolumeB"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+script = ExtResource("2_53ror")
+bus_name = "Music"
+metadata/_custom_type_script = "uid://6lywy6x148wo"
+
+[node name="VolumeC" parent="margin/music_settings" instance=ExtResource("1_khl11")]
+layout_mode = 2
+
+[node name="EntryName" parent="margin/music_settings/VolumeC" index="0"]
+text = "SFX"
+
+[node name="VolumeSlider" type="HSlider" parent="margin/music_settings/VolumeC"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+script = ExtResource("2_53ror")
+bus_name = "SFX"
+metadata/_custom_type_script = "uid://6lywy6x148wo"
+
+[editable path="margin/music_settings/VolumeA"]
+[editable path="margin/music_settings/VolumeB"]
+[editable path="margin/music_settings/VolumeC"]

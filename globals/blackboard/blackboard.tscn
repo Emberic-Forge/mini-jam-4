@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://htx0xtpp0bp6"]
+
+[ext_resource type="Script" uid="uid://cado14vbs0mip" path="res://globals/blackboard/scripts/blackboard.gd" id="1_k0o2p"]
+
+[node name="Blackboard" type="Node"]
+script = ExtResource("1_k0o2p")
+variables = Dictionary[String, Variant]({
+"mouse_sensitivity": 0.5
+})

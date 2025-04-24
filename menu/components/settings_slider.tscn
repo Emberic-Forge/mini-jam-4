@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://3rltpbmfb7wb"]
+
+[node name="SliderGroup" type="HBoxContainer"]
+
+[node name="EntryName" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+text = "Entry"
+vertical_alignment = 1
