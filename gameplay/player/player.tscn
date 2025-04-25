@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://eih60ruue3hn"]
+
+[ext_resource type="Script" uid="uid://bkkma2xs2evuy" path="res://gameplay/player/scripts/player_controller.gd" id="1_01s76"]
+[ext_resource type="Script" uid="uid://7sur8h4vacj0" path="res://gameplay/player/scripts/player_settings.gd" id="2_wvk08"]
+[ext_resource type="Script" uid="uid://dq57lh5ox6ht2" path="res://gameplay/player/scripts/camera_controller.gd" id="2_xq3ts"]
+
+[sub_resource type="Resource" id="Resource_011tu"]
+script = ExtResource("2_wvk08")
+movement_speed_in_meters = 5.0
+jump_height_in_meters = 1.0
+move_left_action = "move_left"
+move_right_action = "move_right"
+move_forward_action = "move_forward"
+move_backward_action = "move_backward"
+jump_action = "jump"
+metadata/_custom_type_script = "uid://7sur8h4vacj0"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_omfh6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_01s76"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_wvk08"]
+
+[node name="Player" type="Node3D"]
+
+[node name="Avatar" type="CharacterBody3D" parent="."]
+script = ExtResource("1_01s76")
+player_settings = SubResource("Resource_011tu")
+
+[node name="ColBox" type="CollisionShape3D" parent="Avatar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.986081, 0)
+shape = SubResource("CapsuleShape3D_omfh6")
+
+[node name="TempMesh" type="MeshInstance3D" parent="Avatar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00826, 0)
+mesh = SubResource("CapsuleMesh_01s76")
+
+[node name="CameraArm" type="SpringArm3D" parent="Avatar"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52265, 0)
+shape = SubResource("SeparationRayShape3D_wvk08")
+spring_length = 5.0
+script = ExtResource("2_xq3ts")
+
+[node name="CameraAnchor" type="RemoteTransform3D" parent="Avatar/CameraArm"]

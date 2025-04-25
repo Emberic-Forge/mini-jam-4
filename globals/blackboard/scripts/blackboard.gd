@@ -34,3 +34,8 @@ func get_string(name : String) -> String:
 
 func is_numeric(value : Variant) -> bool:
 	return value is float or value is int
+
+func get_or_add(name : String, default_value : Variant = null) -> Variant:
+	if !variables.has(name):
+		variables[name] = default_value
+	return variables[name]

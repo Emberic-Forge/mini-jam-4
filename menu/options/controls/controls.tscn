@@ -25,15 +25,31 @@ label_settings = SubResource("LabelSettings_v7c1g")
 
 [node name="remap_button" parent="margin/order" instance=ExtResource("1_v7c1g")]
 layout_mode = 2
-input_action = "test_a"
+input_action = "move_left"
 
 [node name="remap_button2" parent="margin/order" instance=ExtResource("1_v7c1g")]
 layout_mode = 2
-input_action = "test_b"
+input_action = "move_right"
 
 [node name="remap_button3" parent="margin/order" instance=ExtResource("1_v7c1g")]
 layout_mode = 2
-input_action = "test_c"
+input_action = "move_forward"
+
+[node name="remap_button4" parent="margin/order" instance=ExtResource("1_v7c1g")]
+layout_mode = 2
+input_action = "move_backward"
+
+[node name="remap_button5" parent="margin/order" instance=ExtResource("1_v7c1g")]
+layout_mode = 2
+input_action = "jump"
+
+[node name="remap_button6" parent="margin/order" instance=ExtResource("1_v7c1g")]
+layout_mode = 2
+input_action = "scope"
+
+[node name="remap_button7" parent="margin/order" instance=ExtResource("1_v7c1g")]
+layout_mode = 2
+input_action = "fire"
 
 [node name="Mouse Sensitivity" type="Label" parent="margin/order"]
 layout_mode = 2
