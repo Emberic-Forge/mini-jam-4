@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayerSettings" load_steps=2 format=3 uid="uid://cw8pmt75sh6k1"]
+
+[ext_resource type="Script" uid="uid://7sur8h4vacj0" path="res://gameplay/player/scripts/player_settings.gd" id="1_en53l"]
+
+[resource]
+script = ExtResource("1_en53l")
+movement_speed_in_meters = 5.0
+jump_height_in_meters = 1.5
+move_left_action = "move_left"
+move_right_action = "move_right"
+move_forward_action = "move_forward"
+move_backward_action = "move_backward"
+jump_action = "jump"
+metadata/_custom_type_script = "uid://7sur8h4vacj0"
