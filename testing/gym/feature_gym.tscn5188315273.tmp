@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bn5436mvr07ko"]
 
 [ext_resource type="Material" uid="uid://bvi23800m7p3n" path="res://testing/gym/assets/materials/red_grid_mat.tres" id="1_cvqr8"]
-[ext_resource type="Script" uid="uid://bain5vogph2bv" path="res://testing/gym/scripts/feature_gym.gd" id="1_pkkkd"]
 [ext_resource type="PackedScene" uid="uid://eih60ruue3hn" path="res://gameplay/player/player.tscn" id="2_bhf4t"]
 [ext_resource type="Material" uid="uid://c1j7gdyuo5grv" path="res://testing/gym/assets/materials/orange_grid_mat.tres" id="2_mbwnh"]
+[ext_resource type="PackedScene" uid="uid://cfrh4t3i4ed0p" path="res://menu/pause_menu.tscn" id="3_cvqr8"]
 [ext_resource type="PackedScene" uid="uid://c76scay872hvw" path="res://gameplay/beam/beam_emitter.tscn" id="5_pkkkd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cvqr8"]
@@ -20,7 +20,6 @@ background_mode = 2
 sky = SubResource("Sky_mbwnh")
 
 [node name="FeatureGym" type="Node3D"]
-script = ExtResource("1_pkkkd")
 
 [node name="World Shape" type="CSGCombiner3D" parent="."]
 use_collision = true
@@ -61,16 +60,18 @@ environment = SubResource("Environment_pkkkd")
 
 [node name="Player" parent="." instance=ExtResource("2_bhf4t")]
 
-[node name="CameraAnchor" parent="Player/Avatar/CameraRotator/CameraArm" index="0"]
-remote_path = NodePath("../../../../../Camera3D")
+[node name="CameraAnchor" parent="Player/Avatar/CameraArm" index="0"]
+remote_path = NodePath("../../../../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52265, 0)
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_cvqr8")]
 
 [node name="BeamEmitter" parent="." instance=ExtResource("5_pkkkd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.52781, 0.485343, 2.4791)
 
 [editable path="Player"]
 [editable path="Player/Avatar/Refractor"]
-[editable path="Player/Avatar/Refractor/BeamEmitter"]
-[editable path="Player/Avatar/Refractor/BeamEmitter/Beam"]
+[editable path="Player/Avatar/Refractor/LocalEmitter"]
+[editable path="Player/Avatar/Refractor/LocalEmitter/Beam"]

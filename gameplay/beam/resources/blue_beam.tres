@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BeamEmissionColor" load_steps=2 format=3 uid="uid://cug5xkyost3hq"]
+
+[ext_resource type="Script" uid="uid://b5lvc1q66q6dc" path="res://gameplay/beam/scripts/beam_emission_color.gd" id="1_cr3k5"]
+
+[resource]
+script = ExtResource("1_cr3k5")
+beam_color = Color(0, 0, 0, 1)
+metadata/_custom_type_script = "uid://b5lvc1q66q6dc"

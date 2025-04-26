@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c76scay872hvw"]
+
+[ext_resource type="Material" uid="uid://cfx8qhoelh1oe" path="res://testing/gym/assets/materials/green_grid_mat.tres" id="1_jvn4f"]
+[ext_resource type="PackedScene" uid="uid://c62n710c4tsgm" path="res://gameplay/beam/beam.tscn" id="2_x3pjj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hhobl"]
+
+[node name="BeamEmitter" type="Node3D"]
+
+[node name="Emitter" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_jvn4f")
+mesh = SubResource("BoxMesh_hhobl")
+
+[node name="Beam" parent="." instance=ExtResource("2_x3pjj")]
+
+[node name="RayCast3D" parent="Beam/Visual" index="0"]
+debug_shape_custom_color = Color(0.831373, 0.780392, 0, 1)
+
+[editable path="Beam"]

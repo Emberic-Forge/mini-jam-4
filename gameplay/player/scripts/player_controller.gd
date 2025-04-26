@@ -3,7 +3,7 @@ class_name MovementController
 
 @export var player_settings : PlayerSettings
 
-@onready var camera_anchor : Node3D = $CameraArm/CameraAnchor
+@onready var camera_anchor : Node3D = $CameraRotator/CameraArm/CameraAnchor
 @onready var gravity_dir = ProjectSettings.get_setting("physics/3d/default_gravity_vector")
 @onready var gravity_amm = ProjectSettings.get_setting("physics/3d/default_gravity")
 

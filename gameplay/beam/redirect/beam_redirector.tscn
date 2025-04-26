@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxmsa6k1vqolb"]
+
+[ext_resource type="Script" uid="uid://dulnjl3x2ha3" path="res://gameplay/beam/redirect/scripts/beam_redirector.gd" id="1_m6ref"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m6ref"]
+
+[node name="BeamRedirector" type="StaticBody3D"]
+script = ExtResource("1_m6ref")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_m6ref")

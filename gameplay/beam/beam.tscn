@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c62n710c4tsgm"]
+
+[ext_resource type="Script" uid="uid://r370g6bdmh5r" path="res://gameplay/beam/scripts/beam.gd" id="1_g11sf"]
+[ext_resource type="Resource" uid="uid://mnlh7fiu5vuw" path="res://gameplay/beam/resources/green_beam.tres" id="2_47tji"]
+[ext_resource type="Material" uid="uid://chugp17dneax5" path="res://testing/gym/assets/materials/white_grid_mat.tres" id="3_nx4i8"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_yew2w"]
+
+[node name="Beam" type="Node3D"]
+script = ExtResource("1_g11sf")
+beam_settings = ExtResource("2_47tji")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 1000)
+collision_mask = 15
+debug_shape_custom_color = Color(1, 0, 1, 1)
+debug_shape_thickness = 5
+
+[node name="Visual" type="MeshInstance3D" parent="."]
+material_override = ExtResource("3_nx4i8")
+mesh = SubResource("CylinderMesh_yew2w")
