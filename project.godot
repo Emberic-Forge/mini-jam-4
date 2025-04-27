@@ -21,6 +21,8 @@ LoadingSystem="*res://globals/loading_system/loading_system.tscn"
 KeyPersistence="*res://globals/key_persistence/scripts/key_persistence.gd"
 PauseSystem="*res://globals/pause_system/pause_system.tscn"
 Blackboard="*res://globals/blackboard/blackboard.tscn"
+CustomDebug="*res://testing/debug/scripts/debug_manager.gd"
+LaserEventBus="*res://gameplay/laser/scripts/laser_event_bus.gd"
 
 [display]
 

@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://bain5vogph2bv" path="res://testing/gym/scripts/feature_gym.gd" id="1_pkkkd"]
 [ext_resource type="PackedScene" uid="uid://eih60ruue3hn" path="res://gameplay/player/player.tscn" id="2_bhf4t"]
 [ext_resource type="Material" uid="uid://c1j7gdyuo5grv" path="res://testing/gym/assets/materials/orange_grid_mat.tres" id="2_mbwnh"]
-[ext_resource type="PackedScene" uid="uid://c6o1g8hq44bct" path="res://gameplay/laser/emitter/laser_emitter.tscn" id="5_pkkkd"]
-[ext_resource type="PackedScene" uid="uid://cii43fghs3fai" path="res://gameplay/laser/redirector/redirector.tscn" id="6_w6u76"]
+[ext_resource type="PackedScene" uid="uid://c76scay872hvw" path="res://gameplay/beam/beam_emitter.tscn" id="5_pkkkd"]
+[ext_resource type="PackedScene" uid="uid://bxmsa6k1vqolb" path="res://gameplay/beam/redirect/beam_redirector.tscn" id="6_w6u76"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cvqr8"]
 sky_top_color = Color(0.575382, 0.816287, 0.98853, 1)
@@ -66,24 +66,19 @@ environment = SubResource("Environment_pkkkd")
 remote_path = NodePath("../../../../../Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.20966, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
-[node name="LaserEmitter" parent="." instance=ExtResource("5_pkkkd")]
-transform = Transform3D(-0.451765, 0, -0.892137, 0, 1, 0, 0.892137, 0, -0.451765, 8, 1.49969, 4)
+[node name="BeamEmitter" parent="." instance=ExtResource("5_pkkkd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7.52781, 0.485343, 2.4791)
 
-[node name="Laser" parent="LaserEmitter/StaticBody3D" index="0"]
-color = Color(0, 1, 0, 1)
+[node name="BeamRedirector" parent="." instance=ExtResource("6_w6u76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36931, 0.465724, 2.55099)
 
-[node name="Redirector" parent="." instance=ExtResource("6_w6u76")]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 1.4969, 4)
-
-[node name="Redirector2" parent="." instance=ExtResource("6_w6u76")]
-transform = Transform3D(5.76205e-08, 0, -1, 0, 1, 0, 1, 0, 5.76205e-08, 7.05371, 1.4969, 7.76724)
-redirect_mode = 1
-
-[node name="Redirector3" parent="." instance=ExtResource("6_w6u76")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -0.0348852, 1.4969, 11.0794)
-redirect_mode = 1
+[node name="BeamRedirector2" parent="." instance=ExtResource("6_w6u76")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, -1.70636, 0.465724, 8.36634)
+facing_type = 1
 
 [editable path="Player"]
-[editable path="LaserEmitter"]
+[editable path="Player/Avatar/Refractor"]
+[editable path="Player/Avatar/Refractor/BeamEmitter"]
+[editable path="Player/Avatar/Refractor/BeamEmitter/Beam"]

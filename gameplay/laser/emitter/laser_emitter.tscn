@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6o1g8hq44bct"]
+
+[ext_resource type="PackedScene" uid="uid://bhoqkis7s81ue" path="res://gameplay/laser/laser.tscn" id="1_ecnpi"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ju5jc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecnpi"]
+
+[node name="LaserEmitter" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_ju5jc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="Laser" parent="StaticBody3D" instance=ExtResource("1_ecnpi")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.564382)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ecnpi")

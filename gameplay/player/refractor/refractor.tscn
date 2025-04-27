@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2wf7y1112u0y"]
+
+[ext_resource type="Script" uid="uid://cqsoefwis357e" path="res://gameplay/player/refractor/scripts/refractor.gd" id="1_lct80"]
+[ext_resource type="PackedScene" uid="uid://bhoqkis7s81ue" path="res://gameplay/laser/laser.tscn" id="2_f4npb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f4npb"]
+radius = 1.25
+
+[node name="Refractor" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_lct80")
+scope_action = "scope"
+fire_action = "fire"
+
+[node name="Shape" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_f4npb")
+
+[node name="LaserPreview" parent="." instance=ExtResource("2_f4npb")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+color = Color(1, 1, 1, 1)

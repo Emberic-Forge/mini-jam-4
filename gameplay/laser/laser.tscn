@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhoqkis7s81ue"]
+
+[ext_resource type="Script" uid="uid://5q261i0r52q7" path="res://gameplay/laser/scripts/laser.gd" id="1_bq1sq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq1sq"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0, 0, 0, 0.615686)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mbqa3"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_bq1sq")
+top_radius = 0.1
+bottom_radius = 0.1
+height = -100.0
+
+[node name="Laser" type="RayCast3D"]
+target_position = Vector3(0, -100, 0)
+collision_mask = 9
+script = ExtResource("1_bq1sq")
+
+[node name="LaserMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+mesh = SubResource("CylinderMesh_mbqa3")

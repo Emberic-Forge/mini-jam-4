@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://eih60ruue3hn"]
+[gd_scene load_steps=8 format=3 uid="uid://eih60ruue3hn"]
 
 [ext_resource type="Script" uid="uid://bkkma2xs2evuy" path="res://gameplay/player/scripts/player_controller.gd" id="1_01s76"]
-[ext_resource type="Script" uid="uid://cb20tsfo0s1go" path="res://gameplay/player/scripts/refractor_handler.gd" id="1_2uk1t"]
 [ext_resource type="Resource" uid="uid://cw8pmt75sh6k1" path="res://gameplay/player/resources/player.tres" id="2_wvk08"]
 [ext_resource type="Script" uid="uid://dq57lh5ox6ht2" path="res://gameplay/player/scripts/camera_controller.gd" id="2_xq3ts"]
-[ext_resource type="PackedScene" uid="uid://ge2v1dj0c1l7" path="res://gameplay/refractor/refractor.tscn" id="4_011tu"]
+[ext_resource type="PackedScene" uid="uid://b2wf7y1112u0y" path="res://gameplay/player/refractor/refractor.tscn" id="4_011tu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_omfh6"]
 
@@ -14,16 +13,9 @@
 
 [node name="Player" type="Node3D"]
 
-[node name="RefractorController" type="Node" parent="."]
-script = ExtResource("1_2uk1t")
-scope_action = "scope"
-
 [node name="Avatar" type="CharacterBody3D" parent="."]
 script = ExtResource("1_01s76")
 player_settings = ExtResource("2_wvk08")
-
-[node name="Refractor" parent="Avatar" instance=ExtResource("4_011tu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="ColBox" type="CollisionShape3D" parent="Avatar"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.986081, 0)
@@ -37,17 +29,11 @@ mesh = SubResource("CapsuleMesh_01s76")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("2_xq3ts")
 
-[node name="RefractorArm" type="RemoteTransform3D" parent="Avatar/CameraRotator"]
-remote_path = NodePath("../../Refractor")
-update_scale = false
-
 [node name="CameraArm" type="SpringArm3D" parent="Avatar/CameraRotator"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20966, 0)
 shape = SubResource("SeparationRayShape3D_wvk08")
 spring_length = 5.0
 
 [node name="CameraAnchor" type="RemoteTransform3D" parent="Avatar/CameraRotator/CameraArm"]
 
-[editable path="Avatar/Refractor"]
-[editable path="Avatar/Refractor/BeamEmitter"]
-[editable path="Avatar/Refractor/BeamEmitter/Beam"]
+[node name="Refractor" parent="Avatar/CameraRotator" instance=ExtResource("4_011tu")]
