@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bn5436mvr07ko"]
+[gd_scene load_steps=11 format=3 uid="uid://bn5436mvr07ko"]
 
 [ext_resource type="Material" uid="uid://bvi23800m7p3n" path="res://testing/gym/assets/materials/red_grid_mat.tres" id="1_cvqr8"]
 [ext_resource type="Script" uid="uid://bain5vogph2bv" path="res://testing/gym/scripts/feature_gym.gd" id="1_pkkkd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://c1j7gdyuo5grv" path="res://testing/gym/assets/materials/orange_grid_mat.tres" id="2_mbwnh"]
 [ext_resource type="PackedScene" uid="uid://c6o1g8hq44bct" path="res://gameplay/laser/emitter/laser_emitter.tscn" id="5_pkkkd"]
 [ext_resource type="PackedScene" uid="uid://cii43fghs3fai" path="res://gameplay/laser/redirector/redirector.tscn" id="6_w6u76"]
+[ext_resource type="PackedScene" uid="uid://cxrftmhdy65sj" path="res://testing/gym/message printer/debug_print.tscn" id="7_a47o1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cvqr8"]
 sky_top_color = Color(0.575382, 0.816287, 0.98853, 1)
@@ -71,19 +72,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.20966, 0)
 [node name="LaserEmitter" parent="." instance=ExtResource("5_pkkkd")]
 transform = Transform3D(-0.451765, 0, -0.892137, 0, 1, 0, 0.892137, 0, -0.451765, 8, 1.49969, 4)
 
-[node name="Laser" parent="LaserEmitter/StaticBody3D" index="0"]
-color = Color(0, 1, 0, 1)
-
 [node name="Redirector" parent="." instance=ExtResource("6_w6u76")]
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0, 1.4969, 4)
+redirect_mode = null
+override_id = null
 
 [node name="Redirector2" parent="." instance=ExtResource("6_w6u76")]
 transform = Transform3D(5.76205e-08, 0, -1, 0, 1, 0, 1, 0, 5.76205e-08, 7.05371, 1.4969, 7.76724)
 redirect_mode = 1
+override_id = null
 
 [node name="Redirector3" parent="." instance=ExtResource("6_w6u76")]
 transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, -0.0348852, 1.4969, 11.0794)
 redirect_mode = 1
+override_id = null
+
+[node name="DebugPrint" parent="." instance=ExtResource("7_a47o1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.36318, 1.57379, 14.6349)
 
 [editable path="Player"]
 [editable path="LaserEmitter"]

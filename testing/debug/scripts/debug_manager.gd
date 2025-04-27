@@ -7,6 +7,8 @@ func _ready() -> void:
 	z_index = 1000
 
 func draw_label(owner: Node3D, position : Vector3, text : String) -> void:
+	if !OS.has_feature('debug'):
+		return
 	# Get a caller id
 	var id := generate_caller_id(owner)
 	var label : HandleLabel
@@ -31,6 +33,8 @@ func draw_label(owner: Node3D, position : Vector3, text : String) -> void:
 	label.visible = not cam.is_position_behind(position)
 
 func draw_3d_line(owner : Node3D, start : Vector3, end : Vector3, width : float, color : Color = Color.WHITE) -> void:
+	if !OS.has_feature('debug'):
+		return
 	var id := generate_caller_id(owner)
 	var line : HandleLine
 	# Add or Get a label
@@ -50,7 +54,7 @@ func draw_3d_line(owner : Node3D, start : Vector3, end : Vector3, width : float,
 	line.color = color
 	line.width = width
 
-	line.visible = not cam.is_position_behind(start) and not cam.is_position_behind(end)
+	line.visible = not cam.is_position_behind(start)
 
 
 func generate_caller_id(owner : Node3D) -> String:
@@ -61,6 +65,8 @@ func generate_caller_id(owner : Node3D) -> String:
 	return owner.name
 
 func _process(_delta : float) -> void:
+	if !OS.has_feature('debug'):
+		return
 	for key in _elements.keys():
 		var label : Control = _elements[key]
 		label.visible = false

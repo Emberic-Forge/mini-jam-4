@@ -11,6 +11,8 @@
 collision_layer = 9
 collision_mask = 9
 script = ExtResource("1_76y4r")
+redirect_mode = null
+override_id = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_u1kwh")

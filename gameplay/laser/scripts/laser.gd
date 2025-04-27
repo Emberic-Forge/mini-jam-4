@@ -1,15 +1,17 @@
 extends RayCast3D
 class_name Laser3D
 
-@export var color : Color
+@export var id : int
 @export var affect_outlets : bool = true
 
 @onready var laser_mesh : MeshInstance3D = $LaserMesh
 
 var last_collided_entity : Node3D
 
+static var laser_color : Array[Color] = [Color.WHITE, Color.RED, Color.GREEN, Color.BLUE]
+
 func _ready() -> void:
-	update_color(color)
+	update_color(id)
 
 func _process(_delta : float) -> void:
 	if last_collided_entity:
@@ -43,11 +45,15 @@ func _process(_delta : float) -> void:
 	laser_mesh.mesh.height = cast_point.y
 	laser_mesh.position.y = cast_point.y/2
 
-func update_color(new_color : Color) -> void:
-	var mat3D := laser_mesh.mesh.surface_get_material(0) as StandardMaterial3D
+func update_color(new_id : int) -> void:
+	var new_color := Laser3D.laser_color[new_id]
+	var mat3D := laser_mesh.material_override as StandardMaterial3D
 	var original_color := mat3D.albedo_color
 
 	mat3D.albedo_color = Color(new_color, original_color.a)
+	mat3D.emission = new_color
+
+	id = new_id
 
 func set_active(new_state : bool) -> void:
 

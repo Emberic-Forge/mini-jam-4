@@ -4,7 +4,7 @@ class_name Redirector
 enum MODE {OVERRIDE, MIRROR, LENS}
 
 @export var redirect_mode : MODE
-@export var override_color : Color
+@export var override_id : int
 
 @onready var laser  : Laser3D = $Offset/Laser
 @onready var offset = $Offset
@@ -18,16 +18,20 @@ func _ready() -> void:
 	LaserEventBus.on_exit.connect(stop_redirecting)
 
 	laser.add_exception(self)
+	laser.set_active(false)
 
 func redirect(incoming_laser : Laser3D, target : Node3D) -> void:
 	if self != target:
 		return
 
 	if redirect_mode == MODE.LENS:
-		apply_color(override_color)
+		apply_color(override_id)
+	else:
+		apply_color(incoming_laser.id)
 
 	laser.set_active(true)
-	print("[LOG][Redirect][%s]: Laser redirected!" % get_path())
+	if OS.has_feature('debug'):
+		print("[LOG][Redirect][%s]: Laser redirected!" % get_path())
 
 func redirect_update(incoming_laser : Laser3D, target : Node3D) -> void:
 	if self != target:
@@ -43,8 +47,8 @@ func stop_redirecting(incoming_laser : Laser3D, target : Node3D) -> void:
 		return
 
 	laser.set_active(false)
-
-	print("[LOG][Redirect][%s]: Stopped redirecting!" % get_path())
+	if OS.has_feature('debug'):
+		print("[LOG][Redirect][%s]: Stopped redirecting!" % get_path())
 
 func update_direction(incoming_laser : Laser3D) -> void:
 	var incoming_dir := (global_position - incoming_laser.global_position).normalized()
@@ -67,9 +71,8 @@ func update_direction(incoming_laser : Laser3D) -> void:
 			offset.global_basis = rotate_towards(-incoming_dir)
 			offset.position = Vector3.ZERO
 
-func apply_color(new_color : Color) -> void:
-	laser.update_color(new_color)
-	pass
+func apply_color(id : int) -> void:
+	laser.update_color(id)
 
 func rotate_towards(direction : Vector3, up_direction : Vector3 = Vector3.UP) -> Basis:
 	return Transform3D.IDENTITY.looking_at(direction, up_direction).basis

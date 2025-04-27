@@ -5,13 +5,12 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bq1sq"]
 resource_local_to_scene = true
 transparency = 1
-albedo_color = Color(0, 0, 0, 0.615686)
+albedo_color = Color(1, 1, 1, 0.6)
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_mbqa3"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_bq1sq")
 top_radius = 0.1
 bottom_radius = 0.1
 height = -100.0
@@ -23,4 +22,5 @@ script = ExtResource("1_bq1sq")
 
 [node name="LaserMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -50, 0)
+material_override = SubResource("StandardMaterial3D_bq1sq")
 mesh = SubResource("CylinderMesh_mbqa3")
