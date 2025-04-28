@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c14h1hvgoigs1"]
+
+[ext_resource type="Script" uid="uid://gc0qlepkia3y" path="res://gameplay/player/refractor/scripts/refractor_resupply.gd" id="1_tywfi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73art"]
+
+[node name="RefractorResupply" type="StaticBody3D"]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_tywfi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_73art")

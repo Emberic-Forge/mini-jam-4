@@ -1,0 +1,308 @@
+[gd_scene load_steps=12 format=3 uid="uid://838f6midn2jt"]
+
+[ext_resource type="Script" uid="uid://bain5vogph2bv" path="res://testing/gym/scripts/feature_gym.gd" id="1_dvvn7"]
+[ext_resource type="Material" uid="uid://chugp17dneax5" path="res://testing/gym/assets/materials/white_grid_mat.tres" id="1_fobds"]
+[ext_resource type="PackedScene" uid="uid://eih60ruue3hn" path="res://gameplay/player/player.tscn" id="2_dvvn7"]
+[ext_resource type="PackedScene" uid="uid://dawo015cweyi" path="res://gameplay/laser/outlet/laser_outlet.tscn" id="5_171xp"]
+[ext_resource type="PackedScene" uid="uid://b8qogbvl21owk" path="res://levels/assets/large door/large_door.tscn" id="6_uo2iw"]
+[ext_resource type="PackedScene" uid="uid://4vdrftvdnwv0" path="res://levels/assets/laser emitter/white_laser_emitter.tscn" id="6_urkyg"]
+[ext_resource type="PackedScene" uid="uid://l8xquf4jojgq" path="res://levels/assets/laser mirror/laser_mirror.tscn" id="7_urkyg"]
+[ext_resource type="PackedScene" uid="uid://dema0kdcbfpc8" path="res://levels/assets/laser emitter/red_laser_emitter.tscn" id="8_c007h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fylya"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_171xp"]
+sky_material = SubResource("ProceduralSkyMaterial_fylya")
+
+[sub_resource type="Environment" id="Environment_uo2iw"]
+background_mode = 2
+sky = SubResource("Sky_171xp")
+tonemap_mode = 2
+
+[node name="MainLevel" type="Node3D"]
+script = ExtResource("1_dvvn7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uo2iw")
+
+[node name="Whitebox" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Floor1" type="CSGCombiner3D" parent="Whitebox"]
+
+[node name="StartingArea" type="CSGCombiner3D" parent="Whitebox/Floor1"]
+
+[node name="CSGBox" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -6.79401)
+use_collision = true
+size = Vector3(6, 1, 19)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox2" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -11.794)
+use_collision = true
+size = Vector3(4, 5, 6)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox6" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.5, -3.04401)
+use_collision = true
+size = Vector3(4, 10, 11.5)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox7" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 3.5, -6.79401)
+use_collision = true
+size = Vector3(1, 10, 19)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox11" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3.5, 3.20599)
+use_collision = true
+size = Vector3(11, 10, 1)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox8" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.5, -15.544)
+use_collision = true
+size = Vector3(4, 10, 1.5)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox9" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.5, -14.544)
+use_collision = true
+size = Vector3(1, 10, 3.5)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox10" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 3.5, -9.79401)
+use_collision = true
+size = Vector3(1, 10, 2)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox3" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -13.794)
+use_collision = true
+size = Vector3(2, 3, 2)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox4" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -11.794)
+use_collision = true
+size = Vector3(2, 2, 2)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox5" type="CSGBox3D" parent="Whitebox/Floor1/StartingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9.79401)
+use_collision = true
+size = Vector3(2, 1, 2)
+material = ExtResource("1_fobds")
+
+[node name="PuzzleA" type="CSGCombiner3D" parent="Whitebox/Floor1"]
+
+[node name="CSGBox6" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3, -11.794)
+use_collision = true
+size = Vector3(14, 1, 2)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox8" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 5.5, -13.294)
+use_collision = true
+size = Vector3(13, 6, 1)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox9" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 5.5, -10.294)
+use_collision = true
+size = Vector3(11, 6, 1)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox10" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5, 5.5, -3.29401)
+use_collision = true
+size = Vector3(1, 6, 13)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox11" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5, 5.5, -5.29401)
+use_collision = true
+size = Vector3(1, 6, 17)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox7" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 3, -3.79401)
+use_collision = true
+size = Vector3(2, 1, 14)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox12" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1, -1, 13.706)
+use_collision = true
+size = Vector3(28.2, 1, 21)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox13" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1, 5.5, 24.606)
+use_collision = true
+size = Vector3(28.2, 14, 1.2)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox14" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 5.5, 2.70599)
+use_collision = true
+size = Vector3(20, 14, 1)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox15" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 5.5, 2.70599)
+use_collision = true
+size = Vector3(3, 14, 1)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox18" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.5, 2.70599)
+use_collision = true
+size = Vector3(4, 4, 1)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox20" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 10.5, 2.70599)
+use_collision = true
+size = Vector3(4, 4, 1)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox19" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 10.5, -5.79401)
+use_collision = true
+size = Vector3(15, 4, 16)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox16" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 5.5, 13.706)
+use_collision = true
+size = Vector3(1, 14, 23)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox17" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6, 5.5, 9.20599)
+use_collision = true
+size = Vector3(1.2, 14, 14)
+material = ExtResource("1_fobds")
+
+[node name="CSGBox21" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleA"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.6, 10.5, 20.206)
+use_collision = true
+size = Vector3(1.2, 4, 8)
+material = ExtResource("1_fobds")
+
+[node name="PuzzleB" type="CSGCombiner3D" parent="Whitebox/Floor1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.7, -1, 24.7)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -7.5)
+size = Vector3(45, 1, 26)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 6.5, 6)
+size = Vector3(45, 14, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.5, -21)
+size = Vector3(11, 14, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39, 6.5, -21)
+size = Vector3(11, 14, 1)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45, 6.5, -7.5)
+size = Vector3(1, 14, 28)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 6.5, -12)
+size = Vector3(1, 14, 19)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 6.5, -3)
+size = Vector3(1, 14, 19)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34, 6.5, -47.5)
+size = Vector3(1, 14, 52)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 6.5, -47.5)
+size = Vector3(1, 14, 52)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 6.5, -74)
+size = Vector3(25, 14, 1)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.8, 6.5, -21)
+size = Vector3(17.4, 14, 1)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 11, -21)
+size = Vector3(7, 5, 1)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 6.5, 3.5)
+size = Vector3(1, 14, 6)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Whitebox/Floor1/PuzzleB"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -47)
+size = Vector3(23, 1, 53)
+
+[node name="Player" parent="." instance=ExtResource("2_dvvn7")]
+
+[node name="CameraAnchor" parent="Player/Avatar/CameraRotator/CameraArm" index="0"]
+remote_path = NodePath("../../../../../Camera3D")
+
+[node name="Refractor" parent="Player/Avatar/CameraRotator" index="1"]
+desired_laser_id = 0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.20966, 0)
+
+[node name="WhiteLaserEmitter" parent="." instance=ExtResource("6_urkyg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, 3)
+
+[node name="PuzzleA" type="Node3D" parent="."]
+
+[node name="LaserOutlet" parent="PuzzleA" instance=ExtResource("5_171xp")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42, 0, 15)
+
+[node name="LargeDoor" parent="PuzzleA" node_paths=PackedStringArray("outlet_reference") instance=ExtResource("6_uo2iw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.7, -0.5, 20.1)
+outlet_reference = NodePath("../LaserOutlet")
+
+[node name="PuzzleB" type="Node3D" parent="."]
+
+[node name="LargeDoor2" parent="PuzzleB" node_paths=PackedStringArray("outlet_reference") instance=ExtResource("6_uo2iw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -1, 3.7)
+outlet_reference = NodePath("../LaserOutlet")
+
+[node name="LaserOutlet" parent="PuzzleB" instance=ExtResource("5_171xp")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 85, 0, 30)
+
+[node name="LaserMirror" parent="PuzzleB" instance=ExtResource("7_urkyg")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 85, 0, 7)
+
+[node name="LaserMirror2" parent="PuzzleB" instance=ExtResource("7_urkyg")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 71, 0, 7)
+
+[node name="LaserMirror3" parent="PuzzleB" instance=ExtResource("7_urkyg")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 63, 0, 7)
+
+[node name="RedLaserEmitter" parent="PuzzleB" instance=ExtResource("8_c007h")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 45, 0, 7)
+
+[editable path="Player"]

@@ -7,7 +7,10 @@ enum MODE {OVERRIDE, MIRROR, LENS}
 @export var override_id : int
 
 @onready var laser  : Laser3D = $Offset/Laser
-@onready var offset = $Offset
+@onready var mesh_instance_3d : MeshInstance3D = $MeshInstance3D
+@onready var offset : Node3D = $Offset
+
+
 
 func is_already_redirecting() -> bool:
 	return laser.enabled
@@ -17,8 +20,25 @@ func _ready() -> void:
 	LaserEventBus.on_stay.connect(redirect_update)
 	LaserEventBus.on_exit.connect(stop_redirecting)
 
+	InteractionEventBus.on_interact.connect(remove_self)
+
+	tree_exiting.connect(func():
+		LaserEventBus.on_enter.disconnect(redirect)
+		LaserEventBus.on_stay.disconnect(redirect_update)
+		LaserEventBus.on_exit.disconnect(stop_redirecting)
+		)
+
 	laser.add_exception(self)
 	laser.set_active(false)
+
+func remove_self(caller : InteractionController, target : Node3D) -> void:
+	if self != target and self != target.get_parent():
+		return
+	laser.set_active(false)
+	if OS.has_feature('debug'):
+		print("[LOG][Redirect][%s]: Stopped redirecting!" % get_path())
+	queue_free()
+
 
 func redirect(incoming_laser : Laser3D, target : Node3D) -> void:
 	if self != target:
@@ -76,3 +96,6 @@ func apply_color(id : int) -> void:
 
 func rotate_towards(direction : Vector3, up_direction : Vector3 = Vector3.UP) -> Basis:
 	return Transform3D.IDENTITY.looking_at(direction, up_direction).basis
+
+func set_mesh_visible(new_state : bool) -> void:
+	mesh_instance_3d.visible = new_state

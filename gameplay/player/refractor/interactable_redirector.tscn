@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://chm17sv0ei8go"]
+
+[ext_resource type="Script" uid="uid://bgaklix3j7ski" path="res://gameplay/laser/redirector/scripts/redirector.gd" id="1_hnpv5"]
+[ext_resource type="PackedScene" uid="uid://bhoqkis7s81ue" path="res://gameplay/laser/laser.tscn" id="2_u05v5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u1kwh"]
+size = Vector3(1, 1, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cixqd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cixqd"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_qm6e7"]
+material = SubResource("StandardMaterial3D_cixqd")
+radius = 0.25
+height = 0.5
+
+[node name="Redirector" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_hnpv5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_u1kwh")
+
+[node name="Offset" type="Node3D" parent="."]
+
+[node name="Laser" parent="Offset" instance=ExtResource("2_u05v5")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+enabled = false
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_cixqd")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_qm6e7")

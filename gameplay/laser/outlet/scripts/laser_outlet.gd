@@ -15,7 +15,8 @@ func _ready() -> void:
 func trigger_event(incoming_laser : Laser3D, target : Node3D) -> void:
 	if self != target:
 		return
-	if desired_laser_id == incoming_laser.id && !is_triggered:
+	var is_laser_valid_id = desired_laser_id == incoming_laser.id || desired_laser_id == 0
+	if  is_laser_valid_id && !is_triggered:
 		is_triggered = true
 		on_laser_hit.emit()
 

@@ -46,6 +46,7 @@ func _process(_delta : float) -> void:
 	laser_mesh.position.y = cast_point.y/2
 
 func update_color(new_id : int) -> void:
+
 	var new_color := Laser3D.laser_color[new_id]
 	var mat3D := laser_mesh.material_override as StandardMaterial3D
 	var original_color := mat3D.albedo_color

@@ -1,24 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cii43fghs3fai"]
+[gd_scene load_steps=4 format=3 uid="uid://cii43fghs3fai"]
 
 [ext_resource type="Script" uid="uid://bgaklix3j7ski" path="res://gameplay/laser/redirector/scripts/redirector.gd" id="1_76y4r"]
 [ext_resource type="PackedScene" uid="uid://bhoqkis7s81ue" path="res://gameplay/laser/laser.tscn" id="1_a82w3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u1kwh"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_76y4r"]
+size = Vector3(1, 1, 0.5)
 
 [node name="Redirector" type="StaticBody3D"]
-collision_layer = 9
-collision_mask = 9
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_76y4r")
-redirect_mode = null
-override_id = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_u1kwh")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_76y4r")
 
 [node name="Offset" type="Node3D" parent="."]
 

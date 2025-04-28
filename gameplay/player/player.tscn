@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://eih60ruue3hn"]
+[gd_scene load_steps=11 format=3 uid="uid://eih60ruue3hn"]
 
 [ext_resource type="Script" uid="uid://bkkma2xs2evuy" path="res://gameplay/player/scripts/player_controller.gd" id="1_01s76"]
+[ext_resource type="Script" uid="uid://bivbflqtn16rb" path="res://gameplay/player/scripts/player.gd" id="1_mo1cy"]
 [ext_resource type="Resource" uid="uid://cw8pmt75sh6k1" path="res://gameplay/player/resources/player.tres" id="2_wvk08"]
 [ext_resource type="Script" uid="uid://dq57lh5ox6ht2" path="res://gameplay/player/scripts/camera_controller.gd" id="2_xq3ts"]
 [ext_resource type="PackedScene" uid="uid://b2wf7y1112u0y" path="res://gameplay/player/refractor/refractor.tscn" id="4_011tu"]
+[ext_resource type="Script" uid="uid://0n1pbmei30pf" path="res://gameplay/player/scripts/interaction_controller.gd" id="5_2uk1t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_omfh6"]
 
@@ -11,7 +13,11 @@
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_wvk08"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_011tu"]
+radius = 4.0
+
 [node name="Player" type="Node3D"]
+script = ExtResource("1_mo1cy")
 
 [node name="Avatar" type="CharacterBody3D" parent="."]
 script = ExtResource("1_01s76")
@@ -37,3 +43,44 @@ spring_length = 5.0
 [node name="CameraAnchor" type="RemoteTransform3D" parent="Avatar/CameraRotator/CameraArm"]
 
 [node name="Refractor" parent="Avatar/CameraRotator" instance=ExtResource("4_011tu")]
+
+[node name="Interactor" type="Area3D" parent="Avatar"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("5_2uk1t")
+interact_action = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Avatar/Interactor"]
+shape = SubResource("SphereShape3D_011tu")
+
+[node name="Interact HUD" type="CanvasLayer" parent="Avatar/Interactor"]
+
+[node name="Popup" type="Control" parent="Avatar/Interactor/Interact HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Text" type="RichTextLabel" parent="Avatar/Interactor/Interact HUD/Popup"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -20.0
+offset_right = 33.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Interact "
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+shortcut_keys_enabled = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Avatar/Interactor" to="Avatar/Interactor" method="_on_body_entered"]
+[connection signal="body_exited" from="Avatar/Interactor" to="Avatar/Interactor" method="_on_body_exited"]
